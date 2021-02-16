@@ -40,6 +40,8 @@
 </template>
 
 <script>
+  import { API_URL } from '../api';
+
   export default {
     props: ['project'],
     data: () => ({
@@ -51,7 +53,7 @@
       },
       async onDelete() {
         try {
-          await fetch(`http://localhost:3000/projects/${this.project.id}`, {
+          await fetch(`${API_URL}/${this.project.id}`, {
             method: 'DELETE',
           });
 
@@ -62,7 +64,7 @@
       },
       async toggleComplete() {
         try {
-          await fetch(`http://localhost:3000/projects/${this.project.id}`, {
+          await fetch(`${API_URL}/${this.project.id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ completed: !this.project.completed }),
