@@ -21,6 +21,7 @@
 
 <script>
   import SingleProject from '../components/SingleProject';
+  import { API_URL } from '../api';
 
   export default {
     name: 'Home',
@@ -53,7 +54,7 @@
     },
     async mounted() {
       try {
-        const response = await fetch('http://localhost:3000/projects');
+        const response = await fetch(API_URL);
         const data = await response.json();
 
         this.projects = data;

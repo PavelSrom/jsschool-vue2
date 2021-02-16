@@ -27,6 +27,8 @@
 </template>
 
 <script>
+  import { API_URL } from '../api';
+
   export default {
     data: () => ({
       project: null,
@@ -35,7 +37,7 @@
       const id = this.$route.params.id;
 
       try {
-        const response = await fetch(`http://localhost:3000/projects/${id}`);
+        const response = await fetch(`${API_URL}/${id}`);
         const data = await response.json();
 
         this.project = data;
@@ -49,7 +51,7 @@
         const body = JSON.stringify(this.project);
 
         try {
-          await fetch(`http://localhost:3000/projects/${id}`, {
+          await fetch(`${API_URL}/${id}`, {
             method: 'PATCH',
             headers: {
               'Content-Type': 'application/json',

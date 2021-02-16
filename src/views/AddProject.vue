@@ -18,6 +18,8 @@
 </template>
 
 <script>
+  import { API_URL } from '../api';
+
   export default {
     data: () => ({
       title: '',
@@ -32,7 +34,7 @@
         });
 
         try {
-          await fetch('http://localhost:3000/projects', {
+          await fetch(API_URL, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
